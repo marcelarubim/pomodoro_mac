@@ -37,8 +37,6 @@ public enum Theme: Int {
             return [ NSAttributedStringKey.foregroundColor : NSColor.white,
                      NSAttributedStringKey.paragraphStyle : ThemeManager.pragraphStyle(alignment: 0),
                      NSAttributedStringKey.backgroundColor : NSColor.clear]
-//
-//            button.attributedTitle = NSMutableAttributedString(string: "Hello World", attributes: [NSAttributedStringKey.foregroundColor: NSColor.white, NSAttributedStringKey.paragraphStyle: style, NSAttributedStringKey.font: NSFont.systemFont(ofSize: 18)])
 
         case .Graphical:
             return [ NSAttributedStringKey.foregroundColor : NSColor.blue,

@@ -11,22 +11,18 @@ import Cocoa
 
 extension ViewController
 {
-    func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
-        self.isTimerRunning = true
-        pauseBtn.isEnabled = true
+    func startPomodoro() {
+        pomodoro.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        pomodoro.run()
         resumeClicked = false
+        self.startBtn.isEnabled = false
+        self.pauseBtn.isEnabled = true
         self.pauseBtn.attributedTitle = NSAttributedString(string: "Pause")
     }
     
     @objc func updateTimer() {
-        if seconds < 1 {
-            timer.invalidate()
-            //Send alert to indicate "time's up!"
-        } else {
-            seconds -= 1
-            timerLabel.stringValue = timeString(time: TimeInterval(seconds))
-        }
+        pomodoro.updateTimer()
+        timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
     }
     
     func timeString(time:TimeInterval) -> String {
@@ -34,5 +30,5 @@ extension ViewController
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
-    }
+    }    
 }
