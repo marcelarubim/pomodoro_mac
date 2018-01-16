@@ -14,10 +14,7 @@ extension ViewController
     func startPomodoro() {
         pomodoro.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         pomodoro.run()
-        resumeClicked = false
         self.startBtn.isEnabled = false
-        self.pauseBtn.isEnabled = true
-        self.pauseBtn.attributedTitle = NSAttributedString(string: "Pause")
     }
     
     @objc func updateTimer() {

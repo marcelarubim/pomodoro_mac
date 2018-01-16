@@ -733,7 +733,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="NUQ-CL-Fdp">
-                                    <rect key="frame" x="233" y="1" width="16" height="101"/>
+                                    <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -747,11 +747,11 @@
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bk-bG-Aac">
-                                <rect key="frame" x="150" y="39" width="180" height="32"/>
+                                <rect key="frame" x="194" y="39" width="93" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fYD-yh-AQP">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="32"/>
                                         <buttonCell key="cell" type="bevel" title="Start" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="e6s-lv-YVH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -760,18 +760,8 @@
                                             <action selector="startButtonClicked:" target="XfG-lQ-9wD" id="CKo-Jb-Ico"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="32" translatesAutoresizingMaskIntoConstraints="NO" id="2sc-Fu-0rD">
-                                        <rect key="frame" x="65" y="0.0" width="50" height="32"/>
-                                        <buttonCell key="cell" type="bevel" title="Pause" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Axu-cR-0wO">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="pauseButtonClicked:" target="XfG-lQ-9wD" id="62N-sF-nhh"/>
-                                        </connections>
-                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9a8-dL-UBH">
-                                        <rect key="frame" x="130" y="0.0" width="50" height="32"/>
+                                        <rect key="frame" x="54" y="0.0" width="39" height="32"/>
                                         <buttonCell key="cell" type="bevel" title="Reset" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="15G-vt-A2i">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -784,10 +774,8 @@
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
@@ -796,7 +784,6 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="4x5-qt-R3q" id="DsV-Um-jbi"/>
-                        <outlet property="pauseBtn" destination="2sc-Fu-0rD" id="fYq-AU-nT1"/>
                         <outlet property="restartBtn" destination="9a8-dL-UBH" id="WOY-lU-dAr"/>
                         <outlet property="startBtn" destination="fYD-yh-AQP" id="zQH-kF-fwO"/>
                         <outlet property="timerLabel" destination="95E-L8-U8e" id="aK8-y6-CEr"/>

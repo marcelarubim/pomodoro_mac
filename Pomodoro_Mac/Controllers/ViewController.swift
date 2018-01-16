@@ -15,22 +15,13 @@ class ViewController: NSViewController {
 
     var db = Database()
     var pomodoro = Pomodoro()
-    var resumeClicked = false
-    
-    var dateFormatter: DateFormatter = {
-        let _formatter = DateFormatter()
-        _formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSX"
-        _formatter.locale = Locale(identifier: "en_US_POSIX")
-        _formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return _formatter
-    }()
+
 //    collectionView?.register(ArticleViewCell.self, forCellWithReuseIdentifier: cellId)
 //    collectionView?.backgroundColor = .white
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var timerLabel: NSTextField!
     @IBOutlet weak var startBtn: NSButton!
-    @IBOutlet weak var pauseBtn: NSButton!
     @IBOutlet weak var restartBtn: NSButton!
     {
         didSet {
@@ -44,21 +35,9 @@ class ViewController: NSViewController {
         }
     }
     
-    @IBAction func pauseButtonClicked(_ sender: Any) {
-        if self.resumeClicked == false {
-            self.resumeClicked = true
-            self.pauseBtn.attributedTitle = NSAttributedString(string: "Resume")
-            pomodoro.invalidate()
-        } else {
-            startPomodoro()
-            self.resumeClicked = false
-        }
-    }
-    
     @IBAction func resetButtonClicked(_ sender: Any) {
         pomodoro.invalidate()
-        timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
-        pauseBtn.isEnabled = false
+        timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.timerSeconds))
         startBtn.isEnabled = true
     }
     
@@ -78,8 +57,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db.open()
-                
-        pauseBtn.isEnabled = false
+        
         timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
 //        configureCollectionView()
     }

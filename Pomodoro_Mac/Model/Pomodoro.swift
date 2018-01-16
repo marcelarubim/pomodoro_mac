@@ -58,6 +58,7 @@ class Pomodoro {
         self._seconds = self.timerSeconds
     }
     
+    
     func updateTimer() {
         if self._seconds < 1 {
             self.stop = Date()
