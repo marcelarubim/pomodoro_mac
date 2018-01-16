@@ -43,10 +43,7 @@ class ViewController: NSViewController {
         db.open()
         stopBtn.isEnabled = false
         timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
-//        configureCollectionView()
     }
-    
-    
     
     static func freshController() -> ViewController {
         //1.
