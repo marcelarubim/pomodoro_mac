@@ -11,68 +11,74 @@ import SQLite
 
 class Database
 {
-    var db : OpaquePointer?
+    var dateFormatter: DateFormatter = {
+        let _formatter = DateFormatter()
+        _formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSX"
+        _formatter.locale = Locale(identifier: "en_US_POSIX")
+        _formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return _formatter
+    }()
     
+    let dbName = "PomodoroDB.sqlite"
+    internal let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+    internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+
+    var db : OpaquePointer?
+    var errorMessage: String { return String(cString: sqlite3_errmsg(db)) }
+
     func open()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("PomodoroDatabase.sqlite")
+            .appendingPathComponent(dbName)
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
         }
+        
+        do {
+            try self.createTable()
+        }
+        catch SQLiteError.prepare(let message) {
+            print("error creating table: \(message)")
+        } catch {
+            return
+        }            
     }
     
-    func createTable() {
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Pomodoro (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, start DATETIME, end DATETIME)", nil, nil, nil) != SQLITE_OK {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error creating table: \(errmsg)")
+    func createTable() throws {
+        guard sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Pomodoro (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, start DATETIME, end DATETIME)", nil, nil, nil) == SQLITE_OK else {
+            throw SQLiteError.prepare(message: errorMessage)
         }
     }
     
-//    var errorMessage: String { return String(cString: sqlite3_errmsg(db)) }
-    
-    func insertPomodoro(pomodoro : Pomodoro) {
-        
-        let queryString = "INSERT INTO Pomodoro (name, start, end) VALUES (?,?,?)"
-
-        var stmt: OpaquePointer?
+    func insert(pomodoro : Pomodoro) throws {
+        var stmt: OpaquePointer? = nil
+        let queryString = "INSERT INTO pomodoro (name, start, end) VALUES (?,?,?)"
 
         //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
+        guard sqlite3_prepare_v2(db, queryString, -1, &stmt, nil) == SQLITE_OK else{
+            throw SQLiteError.prepare(message: errorMessage)
         }
+        defer { sqlite3_finalize(stmt) }
         
         //binding the parameters
-        guard sqlite3_bind_text(stmt, 1, pomodoro.name, -1, nil) == SQLITE_OK else {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
-            return
+        guard sqlite3_bind_text(stmt, 1, pomodoro.name, -1, SQLITE_TRANSIENT) == SQLITE_OK else {
+            throw SQLiteError.bind(message: errorMessage)
         }
         
-        guard sqlite3_bind_text(stmt, 2, dateFormatter.string(from: pomodoro.start), -1, nil) == SQLITE_OK else {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding start: \(errmsg)")
-            return
+        guard sqlite3_bind_text(stmt, 2, dateFormatter.string(from: pomodoro.start), -1, SQLITE_TRANSIENT) == SQLITE_OK else {
+            throw SQLiteError.bind(message: errorMessage)
         }
         
-        guard sqlite3_bind_text(stmt, 3, dateFormatter.string(from: pomodoro.stop), -1, nil) == SQLITE_OK else {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding end: \(errmsg)")
-            return
+        guard sqlite3_bind_text(stmt, 3, dateFormatter.string(from: pomodoro.stop), -1, SQLITE_TRANSIENT) == SQLITE_OK else {
+            throw SQLiteError.bind(message: errorMessage)
         }
 
-        
         //executing the query to insert values
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting hero: \(errmsg)")
-            return
+        guard sqlite3_step(stmt) == SQLITE_DONE else {
+            throw SQLiteError.step(message: errorMessage)
         }
 
         print("Successfully inserted row.")
-        sqlite3_finalize(stmt)
     }
     
     func queryPomodoro() {
@@ -99,10 +105,21 @@ class Database
         } else {
             print("SELECT statement could not be prepared")
         }
-        
-        // 6
+
         sqlite3_finalize(queryStatement)
     }
-
-
 }
+
+enum SQLiteError: Error {
+    case open(result: Int32)
+    case exec(message: String)
+    case prepare(message: String)
+    case bind(message: String)
+    case step(message: String)
+    case column(message: String)
+    case invalidDate
+    case missingData
+    case noDataChanged
+}
+
+
