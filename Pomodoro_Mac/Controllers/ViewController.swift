@@ -10,9 +10,6 @@ import Cocoa
 import SQLite
 
 class ViewController: NSViewController {
-    
-    fileprivate let cellId = "cellId"
-
     var db = Database()
     var pomodoro = Pomodoro(timerSeconds: 5)
 
@@ -41,19 +38,6 @@ class ViewController: NSViewController {
         stopBtn.isEnabled = false
     }
     
-    fileprivate func configureCollectionView() {
-        // 1
-        let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
-        flowLayout.minimumInteritemSpacing = 10.0
-        flowLayout.minimumLineSpacing = 10.0
-        collectionView.collectionViewLayout = flowLayout
-        // 2
-        collectionView.wantsLayer = true
-        // 3
-        collectionView.backgroundColors = [NSColor.clear]
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         db.open()
@@ -62,10 +46,19 @@ class ViewController: NSViewController {
 //        configureCollectionView()
     }
     
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
+    
+    
+    static func freshController() -> ViewController {
+        //1.
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+        //2.
+        let identifier = NSStoryboard.SceneIdentifier(rawValue: "ViewController")
+        //3.
+        guard let viewcontroller = storyboard.instantiateController(withIdentifier: identifier) as? ViewController else {
+            fatalError("Why cant i find ViewController? - Check Main.storyboard")
         }
+        return viewcontroller
     }
+    
 }
 
