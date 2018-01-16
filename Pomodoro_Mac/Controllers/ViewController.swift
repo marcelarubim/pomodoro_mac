@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     fileprivate let cellId = "cellId"
 
     var db = Database()
-    var pomodoro = Pomodoro()
+    var pomodoro = Pomodoro(timerSeconds: 5)
 
 //    collectionView?.register(ArticleViewCell.self, forCellWithReuseIdentifier: cellId)
 //    collectionView?.backgroundColor = .white
@@ -22,23 +22,23 @@ class ViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var timerLabel: NSTextField!
     @IBOutlet weak var startBtn: NSButton!
-    @IBOutlet weak var restartBtn: NSButton!
+    @IBOutlet weak var stopBtn: NSButton!
     {
         didSet {
-            restartBtn.attributedTitle = NSAttributedString(string: "Restart", attributes: [NSAttributedStringKey.foregroundColor : NSColor.red])
+            stopBtn.attributedTitle = NSAttributedString(string: "Stop", attributes: [NSAttributedStringKey.foregroundColor : NSColor.red])
         }
     }    
     
     @IBAction func startButtonClicked(_ sender: Any) {
         if !pomodoro.isValid {
-            startPomodoro()
+            startPomodoro()            
         }
     }
     
-    @IBAction func resetButtonClicked(_ sender: Any) {
+    @IBAction func stopButtonClicked(_ sender: Any) {
         pomodoro.invalidate()
-        timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.timerSeconds))
         startBtn.isEnabled = true
+        stopBtn.isEnabled = false
     }
     
     fileprivate func configureCollectionView() {
@@ -57,7 +57,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db.open()
-        
+        stopBtn.isEnabled = false
         timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
 //        configureCollectionView()
     }
