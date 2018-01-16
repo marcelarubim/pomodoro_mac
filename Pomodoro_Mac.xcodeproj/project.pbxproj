@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F44C156200E3EBA007D0897 /* ViewController.Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C154200E3EBA007D0897 /* ViewController.Timer.swift */; };
 		1F44C157200E3EBA007D0897 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C155200E3EBA007D0897 /* ViewController.swift */; };
+		1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C159200E40F7007D0897 /* EventMonitor.swift */; };
 		1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */; };
 		1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE156F61FFD6FE300CE081A /* AppDelegate.swift */; };
 		1FE156FB1FFD6FE300CE081A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE156FA1FFD6FE300CE081A /* Assets.xcassets */; };
@@ -146,6 +147,7 @@
 /* Begin PBXFileReference section */
 		1F44C154200E3EBA007D0897 /* ViewController.Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.Timer.swift; sourceTree = "<group>"; };
 		1F44C155200E3EBA007D0897 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F44C159200E40F7007D0897 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
 		1FE156F31FFD6FE300CE081A /* Pomodoro_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE156F61FFD6FE300CE081A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F44C158200E40DC007D0897 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1F44C159200E40F7007D0897 /* EventMonitor.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		1FE156EA1FFD6FE300CE081A = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 		1FE156F51FFD6FE300CE081A /* Pomodoro_Mac */ = {
 			isa = PBXGroup;
 			children = (
+				1F44C158200E40DC007D0897 /* Helpers */,
 				1FE1570C2000DE4F00CE081A /* Assets */,
 				1FE1570B2000DE2F00CE081A /* Model */,
 				1FE1570A2000DE1B00CE081A /* Controllers */,
@@ -457,6 +468,7 @@
 				1F44C156200E3EBA007D0897 /* ViewController.Timer.swift in Sources */,
 				1FFA514220053DCA00E97099 /* Database.swift in Sources */,
 				1FE157071FFE9A9400CE081A /* Style.swift in Sources */,
+				1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */,
 				1F44C157200E3EBA007D0897 /* ViewController.swift in Sources */,
 				1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */,
 			);

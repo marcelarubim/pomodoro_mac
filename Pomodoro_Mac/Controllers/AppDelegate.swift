@@ -11,15 +11,27 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var eventMonitor : EventMonitor?
+    
+//    @IBOutlet weak var contextMenu: NSMenu!
+
+    @IBOutlet weak var contextMenu: NSMenu!
+    
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-            button.action = #selector(togglePopover(_:))
+//            button.action = #selector(togglePopover(_:))
+            button.action = #selector(self.statusBarButtonClicked(sender:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         popover.contentViewController = ViewController.freshController()
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in if let strongSelf = self, strongSelf.popover.isShown {
+            strongSelf.closePopover(sender: event)
+            }
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -33,7 +45,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("\(quoteText) — \(quoteAuthor)")
     }
     
-    @objc func togglePopover(_ sender: Any?) {
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton)
+    {
+        let event = NSApp.currentEvent!
+        
+        if event.type == NSEvent.EventType.rightMouseUp {
+            closePopover(sender: nil)
+            statusItem.menu = self.contextMenu
+            statusItem.popUpMenu(contextMenu)
+            statusItem.menu = nil
+        } else {
+            togglePopover(sender: nil)
+        }
+    }
+    
+    func togglePopover(sender: Any?) {
         if popover.isShown {
             closePopover(sender: sender)
         } else {
@@ -45,10 +71,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
+        eventMonitor?.start()
     }
     
     func closePopover(sender: Any?) {
         popover.performClose(sender)
+        eventMonitor?.stop()
     }
 
 
