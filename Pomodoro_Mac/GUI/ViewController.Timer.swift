@@ -12,21 +12,24 @@ import Cocoa
 extension ViewController
 {
     func startPomodoro() {
-        timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.timerSeconds))
+        txtTimer.stringValue = timeString(time: TimeInterval(pomodoro.timerSeconds))
         pomodoro.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         pomodoro.run()
-        startBtn.isEnabled = false
-        stopBtn.isEnabled = true
+        btnStart.isEnabled = false
+        btnStop.isEnabled = true
     }
     
     @objc func updateTimer() {
         pomodoro.updateTimer()
-        timerLabel.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
+        txtTimer.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
         if(!pomodoro.isValid)
         {
-            startBtn.isEnabled = true
-            stopBtn.isEnabled = false
+            btnStart.isEnabled = true
+            btnStop.isEnabled = false
+//            pomodoro.name = txtName.stringValue
             try? db.insert(pomodoro: pomodoro)
+            pomodoro.name = "New name"
+            try? db.update(pomodoro: pomodoro)
         }
     }
     

@@ -205,7 +205,7 @@
 				1F44C158200E40DC007D0897 /* Helpers */,
 				1FE1570C2000DE4F00CE081A /* Assets */,
 				1FE1570B2000DE2F00CE081A /* Model */,
-				1FE1570A2000DE1B00CE081A /* Controllers */,
+				1FE1570A2000DE1B00CE081A /* GUI */,
 				1FE156FA1FFD6FE300CE081A /* Assets.xcassets */,
 				1FE156FC1FFD6FE300CE081A /* Main.storyboard */,
 				1FFA50EB2003EA6100E97099 /* LICENSE */,
@@ -216,14 +216,14 @@
 			path = Pomodoro_Mac;
 			sourceTree = "<group>";
 		};
-		1FE1570A2000DE1B00CE081A /* Controllers */ = {
+		1FE1570A2000DE1B00CE081A /* GUI */ = {
 			isa = PBXGroup;
 			children = (
 				1F44C155200E3EBA007D0897 /* ViewController.swift */,
 				1F44C154200E3EBA007D0897 /* ViewController.Timer.swift */,
 				1FE156F61FFD6FE300CE081A /* AppDelegate.swift */,
 			);
-			path = Controllers;
+			path = GUI;
 			sourceTree = "<group>";
 		};
 		1FE1570B2000DE2F00CE081A /* Model */ = {

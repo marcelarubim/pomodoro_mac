@@ -686,6 +686,9 @@
                     <items>
                         <menuItem title="Reports" id="Iku-DT-yXi">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="clickReport:" target="Voe-Tx-rLC" id="Gdq-Vc-POA"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="Settings" id="TZe-2x-O1a">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -706,67 +709,38 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpN-pQ-Os8">
-                                <rect key="frame" x="115" y="147" width="250" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="jfm-Ud-vJ8">
-                                    <rect key="frame" x="1" y="1" width="248" height="101"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <collectionView ambiguous="YES" id="4x5-qt-R3q">
-                                            <rect key="frame" x="0.0" y="0.0" width="248" height="101"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="lsK-2Q-fXA">
-                                                <size key="itemSize" width="50" height="50"/>
-                                            </collectionViewFlowLayout>
-                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </collectionView>
-                                    </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="t2L-fM-y7q">
-                                    <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="NUQ-CL-Fdp">
-                                    <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95E-L8-U8e">
-                                <rect key="frame" x="163" y="79" width="154" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95E-L8-U8e">
+                                <rect key="frame" x="121" y="181" width="8" height="42"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="n40-u1-p94">
                                     <font key="font" metaFont="system" size="35"/>
-                                    <color key="textColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bk-bG-Aac">
-                                <rect key="frame" x="194" y="39" width="83" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <stackView identifier="Button Stack" distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bk-bG-Aac">
+                                <rect key="frame" x="84" y="49" width="83" height="32"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fYD-yh-AQP">
                                         <rect key="frame" x="0.0" y="0.0" width="34" height="32"/>
-                                        <buttonCell key="cell" type="bevel" title="Start" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="e6s-lv-YVH">
+                                        <buttonCell key="cell" type="bevel" title="Start" bezelStyle="rounded" imageScaling="proportionallyDown" sound="Basso" inset="2" id="e6s-lv-YVH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="startButtonClicked:" target="XfG-lQ-9wD" id="sxt-le-ssd"/>
+                                            <action selector="btnStartClick:" target="XfG-lQ-9wD" id="sxt-le-ssd"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9a8-dL-UBH">
                                         <rect key="frame" x="49" y="0.0" width="34" height="32"/>
-                                        <buttonCell key="cell" type="bevel" title="Stop" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="15G-vt-A2i">
+                                        <buttonCell key="cell" type="bevel" title="Stop" bezelStyle="rounded" imageScaling="proportionallyDown" inset="2" id="15G-vt-A2i">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="stopButtonClicked:" target="XfG-lQ-9wD" id="edn-5o-G8f"/>
+                                            <action selector="btnStopClick:" target="XfG-lQ-9wD" id="6ea-VF-h1E"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -779,18 +753,43 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-qA-D2q">
+                                <rect key="frame" x="70" y="239" width="113" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Session name" drawsBackground="YES" usesSingleLineMode="YES" usesDataSource="YES" numberOfVisibleItems="5" id="oov-Jc-GF2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="XfG-lQ-9wD" name="content" keyPath="self" id="BqU-wj-ypx"/>
+                                    </connections>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="95E-L8-U8e" firstAttribute="centerX" secondItem="QN9-qA-D2q" secondAttribute="centerX" id="1Qb-3C-D1V"/>
+                            <constraint firstItem="95E-L8-U8e" firstAttribute="centerX" secondItem="0bk-bG-Aac" secondAttribute="centerX" id="6IX-Cy-2Si"/>
+                            <constraint firstItem="95E-L8-U8e" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="6tD-jA-OqC"/>
+                            <constraint firstAttribute="bottom" secondItem="0bk-bG-Aac" secondAttribute="bottom" constant="49" id="91U-PE-efJ"/>
+                            <constraint firstItem="QN9-qA-D2q" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="70" id="AfA-6F-F8s"/>
+                            <constraint firstItem="0bk-bG-Aac" firstAttribute="centerX" secondItem="95E-L8-U8e" secondAttribute="centerX" id="UxU-yh-qck"/>
+                            <constraint firstItem="95E-L8-U8e" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="77" id="ciO-h0-RkA"/>
+                            <constraint firstItem="95E-L8-U8e" firstAttribute="top" secondItem="QN9-qA-D2q" secondAttribute="bottom" constant="20" id="dAm-v1-gGB"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="4x5-qt-R3q" id="DsV-Um-jbi"/>
-                        <outlet property="startBtn" destination="fYD-yh-AQP" id="zQH-kF-fwO"/>
-                        <outlet property="stopBtn" destination="9a8-dL-UBH" id="WOY-lU-dAr"/>
-                        <outlet property="timerLabel" destination="95E-L8-U8e" id="aK8-y6-CEr"/>
+                        <outlet property="btnStart" destination="fYD-yh-AQP" id="zQH-kF-fwO"/>
+                        <outlet property="btnStop" destination="9a8-dL-UBH" id="WOY-lU-dAr"/>
+                        <outlet property="cbxName" destination="QN9-qA-D2q" id="scD-qr-fOl"/>
+                        <outlet property="txtTimer" destination="95E-L8-U8e" id="aK8-y6-CEr"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="hrx-bP-Ax6"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <sound name="Basso"/>
+    </resources>
 </document>

@@ -9,6 +9,7 @@
 import Foundation
 
 class Pomodoro {
+    var id : Int
     var timerSeconds : Int
     var timer : Timer
     var start : Date
@@ -32,6 +33,7 @@ class Pomodoro {
     }
     
     init(){
+        self.id = -1
         self.timer = Timer()
         self.timerSeconds = 10
         self.start = Date()
@@ -40,12 +42,23 @@ class Pomodoro {
     }
     
     init(timerSeconds : Int){
+        self.id = -1
         self.timer = Timer()
         self.timerSeconds = timerSeconds
         self.start = Date()
         self.stop = Date()
         self.isValid = false
     }
+
+    init(id: Int, name: String, start: Date, stop: Date, timer: Int){
+        self.id = id
+        self.timer = Timer()
+        self.timerSeconds = timer
+        self.start = start
+        self.stop = stop
+        self.isValid = false
+    }
+
     
     func invalidate() {
         timer.invalidate()

@@ -17,13 +17,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var contextMenu: NSMenu!
     
+    @IBAction func clickReport(_ sender: Any) {
+        let alert: NSAlert = NSAlert()
+        alert.messageText = "Message"
+        alert.informativeText = "Text"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
+    }
+    
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-//            button.action = #selector(togglePopover(_:))
             button.action = #selector(self.statusBarButtonClicked(sender:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
@@ -36,13 +44,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-    }
-    
-    @objc func printQuote(_ sender: Any?) {
-        let quoteText = "Never put off until tomorrow what you can do the day after tomorrow."
-        let quoteAuthor = "Mark Twain"
-        
-        print("\(quoteText) — \(quoteAuthor)")
     }
     
     @objc func statusBarButtonClicked(sender: NSStatusBarButton)
@@ -78,7 +79,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.performClose(sender)
         eventMonitor?.stop()
     }
-
-
 }
 
