@@ -675,29 +675,9 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Pomodoro_Mac" customModuleProvider="target">
-                    <connections>
-                        <outlet property="contextMenu" destination="fXG-HS-a3Q" id="hlq-J8-3MJ"/>
-                    </connections>
-                </customObject>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Pomodoro_Mac" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu id="fXG-HS-a3Q">
-                    <items>
-                        <menuItem title="Reports" id="Iku-DT-yXi">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="Settings" id="TZe-2x-O1a">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="About" id="QRK-iz-vQN">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="Close" id="g5O-dC-5Cd">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                    </items>
-                </menu>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>

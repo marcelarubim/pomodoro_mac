@@ -16,17 +16,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
     
-    @IBOutlet weak var contextMenu: NSMenu!
-//
-//    @IBAction func clickReport(_ sender: Any) {
-//        let alert: NSAlert = NSAlert()
-//        alert.messageText = "Message"
-//        alert.informativeText = "Text"
-//        alert.alertStyle = .warning
-//        alert.addButton(withTitle: "OK")
-//        alert.runModal()
-//    }
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
@@ -52,9 +41,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if event.type == NSEvent.EventType.rightMouseUp {
             closePopover(sender: nil)
-            statusItem.menu = self.contextMenu
-            statusItem.popUpMenu(contextMenu)
-            statusItem.menu = nil
+            constructMenu()
+            
         } else if popover.isShown {
             closePopover(sender: button)
         } else {
@@ -72,6 +60,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func closePopover(sender: Any?) {
         popover.performClose(sender)
         eventMonitor?.stop()
+    }
+}
+
+// MARK: - Menu actions
+extension AppDelegate {
+    
+    func constructMenu() {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Report",
+                                action: #selector(AppDelegate.clickReport(_:)),
+                                keyEquivalent: "R"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Quit",
+                                action: #selector(NSApplication.terminate(_:)),
+                                keyEquivalent: "q"))
+        
+        statusItem.menu = menu
+        statusItem.popUpMenu(statusItem.menu!)
+        statusItem.menu = nil
+    }
+    
+    @objc func clickReport(_ sender: Any) {
+        let alert: NSAlert = NSAlert()
+        alert.messageText = "Message"
+        alert.informativeText = "Text"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
     }
 }
 
