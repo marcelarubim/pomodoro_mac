@@ -11,33 +11,33 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var eventMonitor : EventMonitor?
-    
-//    @IBOutlet weak var contextMenu: NSMenu!
-
-    @IBOutlet weak var contextMenu: NSMenu!
-    
-    @IBAction func clickReport(_ sender: Any) {
-        let alert: NSAlert = NSAlert()
-        alert.messageText = "Message"
-        alert.informativeText = "Text"
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
-        alert.runModal()
-    }
-    
+    // creates an application icon in the menu bar with a fixed length that the user will see and use
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
+    var eventMonitor: EventMonitor?
+    
+    @IBOutlet weak var contextMenu: NSMenu!
+//
+//    @IBAction func clickReport(_ sender: Any) {
+//        let alert: NSAlert = NSAlert()
+//        alert.messageText = "Message"
+//        alert.informativeText = "Text"
+//        alert.alertStyle = .warning
+//        alert.addButton(withTitle: "OK")
+//        alert.runModal()
+//    }
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {        
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-            button.action = #selector(self.statusBarButtonClicked(sender:))
+            button.action = #selector(togglePopover(_:))
+            button.target = self
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
-        popover.contentViewController = ViewController.freshController()
-        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in if let strongSelf = self, strongSelf.popover.isShown {
-            strongSelf.closePopover(sender: event)
+        popover.contentViewController = PopoverViewController.freshController()
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+            if let strongSelf = self, strongSelf.popover.isShown {
+                strongSelf.closePopover(sender: event)
             }
         }
     }
@@ -46,35 +46,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
-    @objc func statusBarButtonClicked(sender: NSStatusBarButton)
-    {
+    @objc func togglePopover(_ sender: Any) {
+        let button = sender as! NSStatusBarButton
         let event = NSApp.currentEvent!
-        
+
         if event.type == NSEvent.EventType.rightMouseUp {
             closePopover(sender: nil)
             statusItem.menu = self.contextMenu
             statusItem.popUpMenu(contextMenu)
             statusItem.menu = nil
+        } else if popover.isShown {
+            closePopover(sender: button)
         } else {
-            togglePopover(sender: nil)
-        }
-    }
-    
-    func togglePopover(sender: Any?) {
-        if popover.isShown {
-            closePopover(sender: sender)
-        } else {
-            showPopover(sender: sender)
+            showPopover(sender: button)
         }
     }
     
     func showPopover(sender: Any?) {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            eventMonitor?.start()
         }
-        eventMonitor?.start()
     }
-    
+
     func closePopover(sender: Any?) {
         popover.performClose(sender)
         eventMonitor?.stop()

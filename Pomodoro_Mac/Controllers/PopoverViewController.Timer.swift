@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Cocoa
 
-extension ViewController
+extension PopoverViewController
 {
     func startPomodoro() {
         txtTimer.stringValue = timeString(time: TimeInterval(pomodoro.timerSeconds))
-        pomodoro.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        pomodoro.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         pomodoro.run()
         btnStart.isEnabled = false
         btnStop.isEnabled = true
