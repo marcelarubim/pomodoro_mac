@@ -71,6 +71,9 @@ extension AppDelegate {
         menu.addItem(NSMenuItem(title: "Report",
                                 action: #selector(AppDelegate.clickReport(_:)),
                                 keyEquivalent: "R"))
+        menu.addItem(NSMenuItem(title: UserDefaults.standard.bool(forKey: "Sound") ? "Mute" : "Sound",
+                                action: #selector(AppDelegate.toggleSound(_:)),
+                                keyEquivalent: "m"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit",
                                 action: #selector(NSApplication.terminate(_:)),
@@ -88,6 +91,11 @@ extension AppDelegate {
         alert.alertStyle = .warning
         alert.addButton(withTitle: "OK")
         alert.runModal()
+    }
+    
+    @objc func toggleSound(_ sender: Any) {
+        let currentStatus = UserDefaults.standard.bool(forKey: "Sound")
+        UserDefaults.standard.set(!currentStatus, forKey: "Sound")
     }
 }
 

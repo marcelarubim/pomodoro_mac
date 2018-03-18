@@ -9,13 +9,13 @@
 import Foundation
 
 class Pomodoro {
-    var id : Int
-    var timerSeconds : Int
-    var timer : Timer
-    var start : Date
-    var stop : Date
+    var id : Int = -1
+    var timerSeconds : Int = 10
+    var timer : Timer = Timer()
+    var start : Date = Date()
+    var stop : Date = Date()
     var name : String?
-    var isValid : Bool
+    var isValid : Bool = false
     private var _seconds = 0
     
     let queryString = "INSERT INTO Pomodoro (name, start, end) VALUES (?,?,?)"
@@ -32,37 +32,21 @@ class Pomodoro {
         }
     }
     
-    init(){
-        self.id = -1
-        self.timer = Timer()
-        self.timerSeconds = 10
-        self.start = Date()
-        self.stop = Date()
-        self.isValid = false
-    }
-    
-    init(timerSeconds : Int){
-        self.id = -1
-        self.timer = Timer()
+    init(timerSeconds : Int) {
         self.timerSeconds = timerSeconds
-        self.start = Date()
-        self.stop = Date()
-        self.isValid = false
     }
 
-    init(id: Int, name: String, start: Date, stop: Date, timer: Int){
+    init(id: Int, name: String, start: Date, stop: Date, timer: Int) {
         self.id = id
-        self.timer = Timer()
         self.timerSeconds = timer
         self.start = start
         self.stop = stop
-        self.isValid = false
     }
 
     
     func invalidate() {
         timer.invalidate()
-        self.isValid = timer.isValid
+        isValid = timer.isValid
     }
     
     func run() {
@@ -70,7 +54,6 @@ class Pomodoro {
         self.isValid = timer.isValid
         self._seconds = self.timerSeconds
     }
-    
     
     func updateTimer() {
         if self._seconds < 1 {

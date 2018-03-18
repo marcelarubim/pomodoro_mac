@@ -12,7 +12,11 @@ import SQLite
 class PopoverViewController: NSViewController {
     var db = Database()
     var pomodoro = Pomodoro(timerSeconds: 10)
-    
+    var isMuted: Bool = false {
+        didSet {
+            btnStart.sound?.volume = isMuted ? 0.0 : 1.0
+        }
+    }
     @IBOutlet weak var cbxName: NSComboBox!
     @IBOutlet weak var txtTimer: NSTextField!
     @IBOutlet weak var btnStart: NSButton!
@@ -42,6 +46,10 @@ class PopoverViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserDefaults.standard.addObserver(self, forKeyPath: "Sound", options: .new, context: nil)
+        isMuted = !UserDefaults.standard.bool(forKey: "Sound")
+        
         view.layer?.backgroundColor = NSColor.white.cgColor
         if(!db.isOpened)
         {
@@ -51,7 +59,16 @@ class PopoverViewController: NSViewController {
         {
             btnStop.isEnabled = false
         }
-        txtTimer.stringValue = timeString(time: TimeInterval(pomodoro.seconds))
+    }
+
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: "Sound")
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "Sound" {
+            isMuted = !UserDefaults.standard.bool(forKey: "Sound")
+        }
     }
     
 //    func numberOfItems(in comboBox: NSComboBox) -> Int {
@@ -65,6 +82,9 @@ class PopoverViewController: NSViewController {
 //    }
 }
 
+
+
+// MARK: - initialization
 extension PopoverViewController {
     static func freshController() -> PopoverViewController {
         let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
