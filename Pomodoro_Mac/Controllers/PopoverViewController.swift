@@ -10,13 +10,14 @@ import Cocoa
 import SQLite
 
 class PopoverViewController: NSViewController {
-    var db = Database()
-    var pomodoro = Pomodoro(timerSeconds: 10)
+    var db = Database.standard
+    var pomodoro: Pomodoro!
     var isMuted: Bool = false {
         didSet {
             btnStart.sound?.volume = isMuted ? 0.0 : 1.0
         }
     }
+    
     @IBOutlet weak var cbxName: NSComboBox!
     @IBOutlet weak var txtTimer: NSTextField!
     @IBOutlet weak var btnStart: NSButton!
@@ -46,11 +47,13 @@ class PopoverViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        pomodoro = Pomodoro(timerSeconds: UserDefaults.standard.integer(forKey: "TimerSeconds"))
         UserDefaults.standard.addObserver(self, forKeyPath: "Sound", options: .new, context: nil)
         isMuted = !UserDefaults.standard.bool(forKey: "Sound")
         
         view.layer?.backgroundColor = NSColor.white.cgColor
+        cbxName.usesDataSource = true
+        cbxName.dataSource = self
         if(!db.isOpened)
         {
             db.open()
@@ -70,16 +73,7 @@ class PopoverViewController: NSViewController {
             isMuted = !UserDefaults.standard.bool(forKey: "Sound")
         }
     }
-    
-//    func numberOfItems(in comboBox: NSComboBox) -> Int {
-//        // anArray is an Array variable containing the objects
-//        return ["teste", "khvhgjh"].count
-//    }
-//    
-//    // Returns the object that corresponds to the item at the specified index in the combo box
-//    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
-//        return ["teste", "khvhgjh"][index]
-//    }
+
 }
 
 

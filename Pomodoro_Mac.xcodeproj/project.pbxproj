@@ -10,6 +10,7 @@
 		1F44C156200E3EBA007D0897 /* PopoverViewController.Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C154200E3EBA007D0897 /* PopoverViewController.Timer.swift */; };
 		1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C155200E3EBA007D0897 /* PopoverViewController.swift */; };
 		1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C159200E40F7007D0897 /* EventMonitor.swift */; };
+		1F7967FD205ED05F00CF20F6 /* PopoverViewController.Combobox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */; };
 		1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */; };
 		1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE156F61FFD6FE300CE081A /* AppDelegate.swift */; };
 		1FE156FB1FFD6FE300CE081A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE156FA1FFD6FE300CE081A /* Assets.xcassets */; };
@@ -148,6 +149,7 @@
 		1F44C154200E3EBA007D0897 /* PopoverViewController.Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.Timer.swift; sourceTree = "<group>"; };
 		1F44C155200E3EBA007D0897 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1F44C159200E40F7007D0897 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.Combobox.swift; sourceTree = "<group>"; };
 		1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
 		1FE156F31FFD6FE300CE081A /* Pomodoro_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE156F61FFD6FE300CE081A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				1F44C155200E3EBA007D0897 /* PopoverViewController.swift */,
 				1F44C154200E3EBA007D0897 /* PopoverViewController.Timer.swift */,
 				1FE156F61FFD6FE300CE081A /* AppDelegate.swift */,
+				1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */,
 				1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */,
 				1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */,
+				1F7967FD205ED05F00CF20F6 /* PopoverViewController.Combobox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

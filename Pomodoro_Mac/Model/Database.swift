@@ -11,6 +11,9 @@ import SQLite
 
 class Database
 {
+    static let standard = Database()
+    private init() {}
+    
     var dateFormatter: DateFormatter = {
         let _formatter = DateFormatter()
         _formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSX"
@@ -226,35 +229,6 @@ class Database
 
         return Pomodoro(id: pomodoroId, name: pomodoroName, start: pomodoroStart, stop: pomodoroStop, timer: pomodoroTimer)
     }
-
-    
-//    func queryPomodoro() {
-//        let queryStatementString = "SELECT * FROM Pomodoro;"
-//        var queryStatement: OpaquePointer? = nil
-//        // 1
-//        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-//            // 2
-//            if sqlite3_step(queryStatement) == SQLITE_ROW {
-//                // 3
-//                let id = sqlite3_column_int(queryStatement, 0)
-//
-//                // 4
-//                let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
-//                let name = String(cString: queryResultCol1!)
-//
-//                // 5
-//                print("Query Result:")
-//                print("\(id) | \(name)")
-//
-//            } else {
-//                print("Query returned no results")
-//            }
-//        } else {
-//            print("SELECT statement could not be prepared")
-//        }
-//
-//        sqlite3_finalize(queryStatement)
-//        }
 }
 
 enum SQLiteError: Error {
@@ -268,5 +242,3 @@ enum SQLiteError: Error {
     case missingData
     case noDataChanged
 }
-
-

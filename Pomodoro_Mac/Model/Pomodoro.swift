@@ -17,7 +17,6 @@ class Pomodoro {
     var name : String?
     var isValid : Bool = false
     private var _seconds = 0
-    
     let queryString = "INSERT INTO Pomodoro (name, start, end) VALUES (?,?,?)"
     
     var fireDate : Date {
@@ -43,7 +42,6 @@ class Pomodoro {
         self.stop = stop
     }
 
-    
     func invalidate() {
         timer.invalidate()
         isValid = timer.isValid
