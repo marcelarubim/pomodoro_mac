@@ -10,13 +10,12 @@ import Cocoa
 import SQLite
 
 class PopoverViewController: NSViewController {
-    var pomodoro = PomodoroController()
-    var isMuted: Bool = false {
+    private var pomodoro = PomodoroController()
+    private var shouldBeep: Bool = false {
         didSet {
-            btnStart.sound?.volume = isMuted ? 0.0 : 1.0
+            btnStart?.sound?.volume = shouldBeep ? 1.0 : 0.0
         }
     }
-    
     @IBOutlet weak var cbxName: NSComboBox!
     @IBOutlet weak var txtTimer: NSTextField!
     @IBOutlet weak var btnStart: NSButton!
@@ -36,36 +35,30 @@ class PopoverViewController: NSViewController {
         setupStyle()
         setupCallbacks()
         
-        UserDefaults.standard.addObserver(self, forKeyPath: "Sound", options: .new, context: nil)
-        isMuted = !UserDefaults.standard.bool(forKey: "Sound")
-        
 //        cbxName.usesDataSource = true
 //        cbxName.dataSource = self
     }
     
-    func setupStyle() {
-        view.layer?.backgroundColor = NSColor.white.cgColor
-        btnStart.attributedTitle = NSAttributedString(string: "Start", attributes: [.foregroundColor : NSColor.black, .backgroundColor : NSColor.clear])
-        btnStop.attributedTitle = NSAttributedString(string: "Stop", attributes: [.foregroundColor : NSColor.red, .backgroundColor : NSColor.clear])
+    func toggleSound() {
+        shouldBeep = UserDefaults.standard.bool(forKey: "Sound")
     }
     
-    func setupCallbacks() {
+    func setupStyle() {
+        view.layer?.backgroundColor = NSColor.white.cgColor
+        btnStart.attributedTitle = NSAttributedString(string: "Start", attributes: [.foregroundColor : NSColor.black,
+                                                                                    .backgroundColor : NSColor.clear])
+        btnStop.attributedTitle = NSAttributedString(string: "Stop", attributes: [.foregroundColor : NSColor.red,
+                                                                                  .backgroundColor : NSColor.clear])
+        shouldBeep = UserDefaults.standard.bool(forKey: "Sound")
+    }
+    
+    private func setupCallbacks() {
         pomodoro.updateStatus = { status in
             self.update(status: status)
         }
         
         pomodoro.updateTime = { time in
             self.updateTimeText(time: time)
-        }
-    }
-
-    deinit {
-        UserDefaults.standard.removeObserver(self, forKeyPath: "Sound")
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "Sound" {
-            isMuted = !UserDefaults.standard.bool(forKey: "Sound")
         }
     }
     
@@ -88,7 +81,7 @@ class PopoverViewController: NSViewController {
         btnStop.isEnabled = false
     }
     
-    func update(status: TimerStatus) {
+    private func update(status: TimerStatus) {
         switch status {
         case .undefined:
             updateUndefined()

@@ -96,5 +96,6 @@ extension PopoverManager {
     @objc func toggleSound(_ sender: Any) {
         let currentStatus = UserDefaults.standard.bool(forKey: "Sound")
         UserDefaults.standard.set(!currentStatus, forKey: "Sound")
+        (popover.contentViewController as! PopoverViewController).toggleSound()
     }
 }
