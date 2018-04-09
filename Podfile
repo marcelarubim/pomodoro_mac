@@ -7,5 +7,4 @@ target 'Pomodoro_Mac' do
 
   # Pods for Pomodoro_Mac
   pod 'SQLite.swift', '~> 0.11.4'
-  pod 'RealmSwift'
 end
