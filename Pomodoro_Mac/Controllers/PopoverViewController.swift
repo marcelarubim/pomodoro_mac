@@ -10,8 +10,7 @@ import Cocoa
 import SQLite
 
 class PopoverViewController: NSViewController {
-    var db = Database.standard
-    var pomodoro: Pomodoro!
+    var pomodoro = PomodoroController()
     var isMuted: Bool = false {
         didSet {
             btnStart.sound?.volume = isMuted ? 0.0 : 1.0
@@ -21,46 +20,42 @@ class PopoverViewController: NSViewController {
     @IBOutlet weak var cbxName: NSComboBox!
     @IBOutlet weak var txtTimer: NSTextField!
     @IBOutlet weak var btnStart: NSButton!
-    {
-        didSet {
-            btnStart.attributedTitle = NSAttributedString(string: "Start", attributes: [NSAttributedStringKey.foregroundColor : NSColor.black, NSAttributedStringKey.backgroundColor : NSColor.clear])
-        }
-    }
     @IBOutlet weak var btnStop: NSButton!
-    {
-        didSet {
-            btnStop.attributedTitle = NSAttributedString(string: "Stop", attributes: [NSAttributedStringKey.foregroundColor : NSColor.red, NSAttributedStringKey.backgroundColor : NSColor.clear])
-        }
-    }    
     
     @IBAction func btnStartClick(_ sender: Any) {
-        if !pomodoro.isValid {
-            startPomodoro()
-        }
+        pomodoro.start()
     }
     
     @IBAction func btnStopClick(_ sender: Any) {
-        pomodoro.invalidate()
-        btnStart.isEnabled = true
-        btnStop.isEnabled = false
+        pomodoro.stop()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pomodoro = Pomodoro(timerSeconds: UserDefaults.standard.integer(forKey: "TimerSeconds"))
+        
+        setupStyle()
+        setupCallbacks()
+        
         UserDefaults.standard.addObserver(self, forKeyPath: "Sound", options: .new, context: nil)
         isMuted = !UserDefaults.standard.bool(forKey: "Sound")
         
+//        cbxName.usesDataSource = true
+//        cbxName.dataSource = self
+    }
+    
+    func setupStyle() {
         view.layer?.backgroundColor = NSColor.white.cgColor
-        cbxName.usesDataSource = true
-        cbxName.dataSource = self
-        if(!db.isOpened)
-        {
-            db.open()
+        btnStart.attributedTitle = NSAttributedString(string: "Start", attributes: [.foregroundColor : NSColor.black, .backgroundColor : NSColor.clear])
+        btnStop.attributedTitle = NSAttributedString(string: "Stop", attributes: [.foregroundColor : NSColor.red, .backgroundColor : NSColor.clear])
+    }
+    
+    func setupCallbacks() {
+        pomodoro.updateStatus = { status in
+            self.update(status: status)
         }
-        if(!pomodoro.isValid)
-        {
-            btnStop.isEnabled = false
+        
+        pomodoro.updateTime = { time in
+            self.updateTimeText(time: time)
         }
     }
 
@@ -73,10 +68,37 @@ class PopoverViewController: NSViewController {
             isMuted = !UserDefaults.standard.bool(forKey: "Sound")
         }
     }
-
+    
+    private func updateTimeText(time: Int) {
+        txtTimer.stringValue = TimeInterval(time).clockString
+    }
+    
+    private func updateUndefined() {
+        btnStart.isEnabled = true
+        btnStop.isEnabled = false
+    }
+    
+    private func updateRunning() {
+        btnStart.isEnabled = false
+        btnStop.isEnabled = true
+    }
+    
+    private func updateComplete() {
+        btnStart.isEnabled = true
+        btnStop.isEnabled = false
+    }
+    
+    func update(status: TimerStatus) {
+        switch status {
+        case .undefined:
+            updateUndefined()
+        case .running:
+            updateRunning()
+        case .complete, .incomplete:
+            updateComplete()
+        }
+    }
 }
-
-
 
 // MARK: - initialization
 extension PopoverViewController {
@@ -89,4 +111,3 @@ extension PopoverViewController {
         return viewcontroller
     }
 }
-

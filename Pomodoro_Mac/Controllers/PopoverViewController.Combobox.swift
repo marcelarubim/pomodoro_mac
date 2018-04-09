@@ -9,14 +9,19 @@
 import Cocoa
 
 extension PopoverViewController: NSComboBoxDataSource {
-    // Returns the number of items that the data source manages for the combo box
-    func numberOfItems(in comboBox: NSComboBox) -> Int {
-        // anArray is an Array variable containing the objects
-        return ["teste", "khvhgjh"].count
-    }
-    
-    // Returns the object that corresponds to the item at the specified index in the combo box
-    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
-        return ["teste", "khvhgjh"][index]
-    }
+//    func numberOfItems(in comboBox: NSComboBox) -> Int {
+//        do {
+//            let pomdoros = try db.selectAll()
+//            let names: [String] = pomdoros.map{ $0.name ?? "" }
+//            return names.unique().count
+//        } catch {
+//        }
+//        return 0
+//    }
+//    
+//    // Array(Set(x.filter({ (i: Int) in x.filter({ $0 == i }).count > 1})))
+//    // Returns the object that corresponds to the item at the specified index in the combo box
+//    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+//        return ["teste", "khvhgjh"][index]
+//    }
 }

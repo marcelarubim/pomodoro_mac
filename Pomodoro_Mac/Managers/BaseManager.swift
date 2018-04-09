@@ -6,8 +6,20 @@
 //  Copyright © 2018 Marcela Rubim. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
-class BaseManager {
+class BaseManager: INavigation {
+    func loadManager() { }
+    
+    func unloadManager() { }
+    
+    func changeVC(vc: NSViewController) { }
+    
     var storyboard: AppStoryboard!
+}
+
+protocol INavigation {
+    func loadManager()
+    func unloadManager()
+    func changeVC(vc: NSViewController)
 }

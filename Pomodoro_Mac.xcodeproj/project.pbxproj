@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F44C156200E3EBA007D0897 /* PopoverViewController.Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C154200E3EBA007D0897 /* PopoverViewController.Timer.swift */; };
 		1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C155200E3EBA007D0897 /* PopoverViewController.swift */; };
 		1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C159200E40F7007D0897 /* EventMonitor.swift */; };
 		1F520E9D207544130011168A /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520E9C207544130011168A /* BaseManager.swift */; };
 		1F520EA0207545050011168A /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520E9F207545050011168A /* AppEnums.swift */; };
 		1F520EA2207545C30011168A /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA1207545C30011168A /* NSViewController.swift */; };
+		1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA520754ACD0011168A /* ApplicationManager.swift */; };
 		1F7967FD205ED05F00CF20F6 /* PopoverViewController.Combobox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */; };
+		1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */; };
 		1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */; };
+		1FC8F9AF207A7A38004409F5 /* PomodoroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */; };
+		1FC8F9BF207A9612004409F5 /* PopoverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9BE207A9612004409F5 /* PopoverManager.swift */; };
+		1FC8F9C2207AB2B3004409F5 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9C1207AB2B3004409F5 /* AlertFactory.swift */; };
+		1FC8F9C4207AB4D1004409F5 /* MenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9C3207AB4D1004409F5 /* MenuFactory.swift */; };
+		1FC8F9C6207BFD2B004409F5 /* TimeIntervalHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9C5207BFD2B004409F5 /* TimeIntervalHelper.swift */; };
 		1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE156F61FFD6FE300CE081A /* AppDelegate.swift */; };
 		1FE156FB1FFD6FE300CE081A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE156FA1FFD6FE300CE081A /* Assets.xcassets */; };
 		1FE156FE1FFD6FE300CE081A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE156FC1FFD6FE300CE081A /* Main.storyboard */; };
@@ -150,14 +156,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F44C154200E3EBA007D0897 /* PopoverViewController.Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.Timer.swift; sourceTree = "<group>"; };
 		1F44C155200E3EBA007D0897 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1F44C159200E40F7007D0897 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		1F520E9C207544130011168A /* BaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseManager.swift; sourceTree = "<group>"; };
 		1F520E9F207545050011168A /* AppEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		1F520EA1207545C30011168A /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
+		1F520EA520754ACD0011168A /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.Combobox.swift; sourceTree = "<group>"; };
+		1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
+		1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroController.swift; sourceTree = "<group>"; };
+		1FC8F9BE207A9612004409F5 /* PopoverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverManager.swift; sourceTree = "<group>"; };
+		1FC8F9C1207AB2B3004409F5 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		1FC8F9C3207AB4D1004409F5 /* MenuFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
+		1FC8F9C5207BFD2B004409F5 /* TimeIntervalHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalHelper.swift; sourceTree = "<group>"; };
 		1FE156F31FFD6FE300CE081A /* Pomodoro_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE156F61FFD6FE300CE081A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FE156FA1FFD6FE300CE081A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,9 +202,12 @@
 		1F44C158200E40DC007D0897 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1FC8F9C0207AB298004409F5 /* Factories */,
 				1F44C159200E40F7007D0897 /* EventMonitor.swift */,
 				1F520E9F207545050011168A /* AppEnums.swift */,
 				1F520EA1207545C30011168A /* NSViewController.swift */,
+				1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */,
+				1FC8F9C5207BFD2B004409F5 /* TimeIntervalHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -201,8 +216,28 @@
 			isa = PBXGroup;
 			children = (
 				1F520E9C207544130011168A /* BaseManager.swift */,
+				1FE156F61FFD6FE300CE081A /* AppDelegate.swift */,
+				1F520EA520754ACD0011168A /* ApplicationManager.swift */,
+				1FC8F9BE207A9612004409F5 /* PopoverManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		1F520EA720754C8A0011168A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA514120053DCA00E97099 /* Database.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		1FC8F9C0207AB298004409F5 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				1FC8F9C1207AB2B3004409F5 /* AlertFactory.swift */,
+				1FC8F9C3207AB4D1004409F5 /* MenuFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		1FE156EA1FFD6FE300CE081A = {
@@ -226,6 +261,7 @@
 		1FE156F51FFD6FE300CE081A /* Pomodoro_Mac */ = {
 			isa = PBXGroup;
 			children = (
+				1F520EA720754C8A0011168A /* Database */,
 				1F520E9B20753F930011168A /* Managers */,
 				1F44C158200E40DC007D0897 /* Helpers */,
 				1FE1570C2000DE4F00CE081A /* Assets */,
@@ -245,9 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				1F44C155200E3EBA007D0897 /* PopoverViewController.swift */,
-				1F44C154200E3EBA007D0897 /* PopoverViewController.Timer.swift */,
-				1FE156F61FFD6FE300CE081A /* AppDelegate.swift */,
 				1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */,
+				1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,7 +290,6 @@
 		1FE1570B2000DE2F00CE081A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1FFA514120053DCA00E97099 /* Database.swift */,
 				1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */,
 			);
 			path = Model;
@@ -506,14 +540,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoro_Mac/Pods-Pomodoro_Mac-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,14 +593,19 @@
 			files = (
 				1F520E9D207544130011168A /* BaseManager.swift in Sources */,
 				1F520EA2207545C30011168A /* NSViewController.swift in Sources */,
-				1F7967FF205EDD2500CF20F6 /* Array.swift in Sources */,
+				1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */,
+				1FC8F9C4207AB4D1004409F5 /* MenuFactory.swift in Sources */,
 				1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */,
-				1F44C156200E3EBA007D0897 /* PopoverViewController.Timer.swift in Sources */,
+				1FC8F9AF207A7A38004409F5 /* PomodoroController.swift in Sources */,
 				1FFA514220053DCA00E97099 /* Database.swift in Sources */,
+				1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */,
+				1FC8F9BF207A9612004409F5 /* PopoverManager.swift in Sources */,
 				1FE157071FFE9A9400CE081A /* Style.swift in Sources */,
 				1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */,
+				1FC8F9C6207BFD2B004409F5 /* TimeIntervalHelper.swift in Sources */,
 				1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */,
 				1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */,
+				1FC8F9C2207AB2B3004409F5 /* AlertFactory.swift in Sources */,
 				1F520EA0207545050011168A /* AppEnums.swift in Sources */,
 				1F7967FD205ED05F00CF20F6 /* PopoverViewController.Combobox.swift in Sources */,
 			);

@@ -25,3 +25,7 @@ enum AppStoryboard: String {
         return instance.instantiateInitialController() as? NSViewController
     }
 }
+
+enum TimerStatus {
+    case undefined, running, complete, incomplete
+}

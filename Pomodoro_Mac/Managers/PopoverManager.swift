@@ -1,28 +1,24 @@
 //
-//  AppDelegate.swift
+//  PopoverManager.swift
 //  Pomodoro_Mac
 //
-//  Created by Marcela Rubim on 03.01.18.
+//  Created by Marcela Rubim on 08/04/18.
 //  Copyright © 2018 Marcela Rubim. All rights reserved.
 //
 
+import Foundation
 import Cocoa
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
+class PopoverManager {
     // creates an application icon in the menu bar with a fixed length that the user will see and use
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
     let timerSeconds: Int = 30
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func launch() {
         if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-            button.action = #selector(togglePopover(_:))
-            button.target = self
-            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+            configureButton(button)
         }
         popover.contentViewController = PopoverViewController.freshController()
         UserDefaults.standard.register(defaults: ["TimerSeconds" : timerSeconds])
@@ -32,19 +28,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     
     @objc func togglePopover(_ sender: Any) {
         let button = sender as! NSStatusBarButton
         let event = NSApp.currentEvent!
-
+        
         if event.type == NSEvent.EventType.rightMouseUp {
             closePopover(sender: nil)
             constructMenu()
-            
         } else if popover.isShown {
             closePopover(sender: button)
         } else {
@@ -58,28 +49,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             eventMonitor?.start()
         }
     }
-
+    
     func closePopover(sender: Any?) {
         popover.performClose(sender)
         eventMonitor?.stop()
     }
-}
-
-// MARK: - Menu actions
-extension AppDelegate {
     
+    func configureButton(_ button: NSButton) {
+        button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
+        button.action = #selector(togglePopover(_:))
+        button.target = self
+        button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+    }
+}
+extension PopoverManager {
     func constructMenu() {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Report",
-                                action: #selector(AppDelegate.clickReport(_:)),
-                                keyEquivalent: "R"))
-        menu.addItem(NSMenuItem(title: UserDefaults.standard.bool(forKey: "Sound") ? "Mute" : "Sound",
-                                action: #selector(AppDelegate.toggleSound(_:)),
-                                keyEquivalent: "m"))
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit",
-                                action: #selector(NSApplication.terminate(_:)),
-                                keyEquivalent: "q"))
+        let menuItems = [NSMenuItem(title: "Report",
+                                   action: #selector(clickReport(_:)),
+                                   keyEquivalent: "R"),
+                         NSMenuItem(title: UserDefaults.standard.bool(forKey: "Sound") ? "Mute" : "Sound",
+                                    action: #selector(toggleSound(_:)),
+                                    keyEquivalent: "m"),
+                         NSMenuItem.separator(),
+                         NSMenuItem(title: "Quit",
+                                    action: #selector(NSApplication.terminate(_:)),
+                                    keyEquivalent: "q")]
+
+        for item in menuItems {
+            if item.keyEquivalent != "q" {
+                item.target = self
+            }
+            menu.addItem(item)
+        }
         
         statusItem.menu = menu
         statusItem.popUpMenu(statusItem.menu!)
@@ -87,11 +89,7 @@ extension AppDelegate {
     }
     
     @objc func clickReport(_ sender: Any) {
-        let alert: NSAlert = NSAlert()
-        alert.messageText = "Message"
-        alert.informativeText = "Text"
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
+        let alert = AlertFactory.warningOKAlert(message: "Message", information: "Text")
         alert.runModal()
     }
     
@@ -100,4 +98,3 @@ extension AppDelegate {
         UserDefaults.standard.set(!currentStatus, forKey: "Sound")
     }
 }
-
