@@ -14,6 +14,5 @@ class ApplicationManager {
     var currentManager: BaseManager!
     
     func launch() {
-//        currentManager.loadManager()
     }
 }

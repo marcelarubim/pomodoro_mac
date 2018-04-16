@@ -16,16 +16,41 @@ class PopoverManager {
     var eventMonitor: EventMonitor?
     let timerSeconds: Int = 30
     
+    private var pomodoro = PomodoroController()
+    private var popoverViewController: PopoverViewController!
+    
     func launch() {
         if let button = statusItem.button {
             configureButton(button)
         }
-        popover.contentViewController = PopoverViewController.freshController()
+        popoverViewController = PopoverViewController.initFromNib()
+        popover.contentViewController = popoverViewController
+        
+        configHandlers()
+        
         UserDefaults.standard.register(defaults: ["TimerSeconds" : timerSeconds])
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
             if let strongSelf = self, strongSelf.popover.isShown {
                 strongSelf.closePopover(sender: event)
             }
+        }
+    }
+    
+    private func configHandlers(){
+        popoverViewController.start = {
+            self.pomodoro.start()
+        }
+        
+        popoverViewController.stop = {
+            self.pomodoro.stop()
+        }
+        
+        pomodoro.updateStatus = { status in
+            self.popoverViewController.update(status: status)
+        }
+        
+        pomodoro.updateTime = { time in
+            self.popoverViewController.updateTimeText(time: time)
         }
     }
     
@@ -96,6 +121,6 @@ extension PopoverManager {
     @objc func toggleSound(_ sender: Any) {
         let currentStatus = UserDefaults.standard.bool(forKey: "Sound")
         UserDefaults.standard.set(!currentStatus, forKey: "Sound")
-        (popover.contentViewController as! PopoverViewController).toggleSound()
+        popoverViewController.toggleSound(shouldBeep: !currentStatus)
     }
 }

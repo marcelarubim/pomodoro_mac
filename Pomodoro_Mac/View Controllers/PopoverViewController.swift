@@ -10,37 +10,34 @@ import Cocoa
 import SQLite
 
 class PopoverViewController: NSViewController {
-    private var pomodoro = PomodoroController()
-    private var shouldBeep: Bool = false {
-        didSet {
-            btnStart?.sound?.volume = shouldBeep ? 1.0 : 0.0
-        }
-    }
     @IBOutlet weak var cbxName: NSComboBox!
     @IBOutlet weak var txtTimer: NSTextField!
     @IBOutlet weak var btnStart: NSButton!
     @IBOutlet weak var btnStop: NSButton!
     
+    var start:(() -> ())?
+    var stop:(() -> ())?
+    
     @IBAction func btnStartClick(_ sender: Any) {
-        pomodoro.start()
+        start?()
     }
     
     @IBAction func btnStopClick(_ sender: Any) {
-        pomodoro.stop()
+        stop?()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupStyle()
-        setupCallbacks()
+        updateUndefined()
         
 //        cbxName.usesDataSource = true
 //        cbxName.dataSource = self
     }
     
-    func toggleSound() {
-        shouldBeep = UserDefaults.standard.bool(forKey: "Sound")
+    func toggleSound(shouldBeep: Bool) {
+        btnStart?.sound?.volume = getVolume(shouldBeep)
     }
     
     func setupStyle() {
@@ -49,24 +46,26 @@ class PopoverViewController: NSViewController {
                                                                                     .backgroundColor : NSColor.clear])
         btnStop.attributedTitle = NSAttributedString(string: "Stop", attributes: [.foregroundColor : NSColor.red,
                                                                                   .backgroundColor : NSColor.clear])
-        shouldBeep = UserDefaults.standard.bool(forKey: "Sound")
+        btnStart?.sound?.volume = getVolume(UserDefaults.standard.bool(forKey: "Sound"))
     }
     
-    private func setupCallbacks() {
-        pomodoro.updateStatus = { status in
-            self.update(status: status)
-        }
-        
-        pomodoro.updateTime = { time in
-            self.updateTimeText(time: time)
-        }
-    }
-    
-    private func updateTimeText(time: Int) {
+    func updateTimeText(time: Int) {
         txtTimer.stringValue = TimeInterval(time).clockString
     }
     
+    func update(status: TimerStatus) {
+        switch status {
+        case .undefined:
+            updateUndefined()
+        case .running:
+            updateRunning()
+        case .complete, .incomplete:
+            updateComplete()
+        }
+    }
+    
     private func updateUndefined() {
+        updateTimeText(time: 0)
         btnStart.isEnabled = true
         btnStop.isEnabled = false
     }
@@ -81,21 +80,15 @@ class PopoverViewController: NSViewController {
         btnStop.isEnabled = false
     }
     
-    private func update(status: TimerStatus) {
-        switch status {
-        case .undefined:
-            updateUndefined()
-        case .running:
-            updateRunning()
-        case .complete, .incomplete:
-            updateComplete()
-        }
+    private func getVolume(_ shouldBeep: Bool) -> Float {
+        return shouldBeep ? 1.0 : 0.0
     }
+    
 }
 
 // MARK: - initialization
 extension PopoverViewController {
-    static func freshController() -> PopoverViewController {
+    static func initFromNib() -> PopoverViewController {
         let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
         let identifier = NSStoryboard.SceneIdentifier(rawValue: "PopoverViewController")
         guard let viewcontroller = storyboard.instantiateController(withIdentifier: identifier) as? PopoverViewController else {
