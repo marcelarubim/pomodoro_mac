@@ -13,7 +13,6 @@
 		1F520EA0207545050011168A /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520E9F207545050011168A /* AppEnums.swift */; };
 		1F520EA2207545C30011168A /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA1207545C30011168A /* NSViewController.swift */; };
 		1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA520754ACD0011168A /* ApplicationManager.swift */; };
-		1F7967FD205ED05F00CF20F6 /* PopoverViewController.Combobox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */; };
 		1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */; };
 		1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */; };
 		1FC8F9AF207A7A38004409F5 /* PomodoroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */; };
@@ -60,7 +59,6 @@
 		1F520E9F207545050011168A /* AppEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		1F520EA1207545C30011168A /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
 		1F520EA520754ACD0011168A /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
-		1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.Combobox.swift; sourceTree = "<group>"; };
 		1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
 		1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroController.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				1F44C155200E3EBA007D0897 /* PopoverViewController.swift */,
-				1F7967FC205ED05F00CF20F6 /* PopoverViewController.Combobox.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -369,7 +366,6 @@
 				1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */,
 				1FC8F9C2207AB2B3004409F5 /* AlertFactory.swift in Sources */,
 				1F520EA0207545050011168A /* AppEnums.swift in Sources */,
-				1F7967FD205ED05F00CF20F6 /* PopoverViewController.Combobox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import SQLite
 
 class PopoverViewController: NSViewController {
     @IBOutlet weak var cbxName: NSComboBox!
@@ -17,6 +16,10 @@ class PopoverViewController: NSViewController {
     
     var start:(() -> ())?
     var stop:(() -> ())?
+    var getUniqueNames:(() -> ())?
+    var updateName:((String) -> ())?
+    
+    var names:[String] = []
     
     @IBAction func btnStartClick(_ sender: Any) {
         start?()
@@ -32,8 +35,9 @@ class PopoverViewController: NSViewController {
         setupStyle()
         updateUndefined()
         
-//        cbxName.usesDataSource = true
-//        cbxName.dataSource = self
+        cbxName.usesDataSource = true
+        cbxName.dataSource = self
+        cbxName.delegate = self
     }
     
     func toggleSound(shouldBeep: Bool) {
@@ -97,3 +101,39 @@ extension PopoverViewController {
         return viewcontroller
     }
 }
+
+extension PopoverViewController: NSComboBoxDataSource, NSComboBoxDelegate {
+    
+    func uniqueNames(callback: () -> ()) {
+        getUniqueNames?()
+        callback()
+    }
+    
+    func numberOfItems(in comboBox: NSComboBox) -> Int {
+        var numOfItems:Int = 0
+        uniqueNames() {
+            print(names)
+            numOfItems = names.count
+        }
+        return numOfItems
+    }
+
+    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+        return names[index]
+    }
+    
+    func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
+        return names.index(of: string) ?? -1
+    }
+    
+    func comboBoxSelectionDidChange(_ notification: Notification) {
+        updateName?(names[cbxName.indexOfSelectedItem])
+    }
+    
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        if let comboBox = obj.object as? NSComboBox {
+            updateName?(comboBox.stringValue)
+        }
+    }
+}
+

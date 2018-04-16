@@ -44,6 +44,11 @@ class PomodoroController {
         pomodoro.name = name
     }
     
+    func getUniqueNames() -> [String] {
+        let db = Database()
+        return db.allPomodorosNames().unique()
+    }
+    
     @objc func updateTimer() {
         if currentTime < 1 {
             invalidate()
@@ -61,7 +66,6 @@ class PomodoroController {
     }
     
     private func store() {
-        pomodoro.name = "New name"
         let db = Database()
         db.add(pomodoro: pomodoro)
     }

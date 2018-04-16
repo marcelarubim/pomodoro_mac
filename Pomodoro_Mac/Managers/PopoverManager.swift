@@ -45,6 +45,14 @@ class PopoverManager {
             self.pomodoro.stop()
         }
         
+        popoverViewController.updateName = {(name) in
+            self.pomodoro.updateName(name: name)
+        }
+        
+        popoverViewController.getUniqueNames = {
+            self.popoverViewController.names = self.pomodoro.getUniqueNames()
+        }
+        
         pomodoro.updateStatus = { status in
             self.popoverViewController.update(status: status)
         }
