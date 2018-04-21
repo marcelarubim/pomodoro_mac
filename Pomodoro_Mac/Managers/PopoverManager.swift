@@ -16,6 +16,9 @@ class PopoverManager {
     var eventMonitor: EventMonitor?
     let timerSeconds: Int = 30
     
+    var requestWindow:(()->())!
+    
+    private var contextMenu = ContextMenu()
     private var pomodoro = PomodoroController()
     private var popoverViewController: PopoverViewController!
     
@@ -67,7 +70,7 @@ class PopoverManager {
         
         if event.type == NSEvent.EventType.rightMouseUp {
             closePopover(sender: nil)
-            constructMenu()
+            setupMenu()
         } else if popover.isShown {
             closePopover(sender: button)
         } else {
@@ -95,39 +98,45 @@ class PopoverManager {
     }
 }
 extension PopoverManager {
-    func constructMenu() {
-        let menu = NSMenu()
-        let menuItems = [NSMenuItem(title: "Report",
-                                   action: #selector(clickReport(_:)),
-                                   keyEquivalent: "R"),
-                         NSMenuItem(title: UserDefaults.standard.bool(forKey: "Sound") ? "Mute" : "Sound",
-                                    action: #selector(toggleSound(_:)),
-                                    keyEquivalent: "m"),
-                         NSMenuItem.separator(),
-                         NSMenuItem(title: "Quit",
-                                    action: #selector(NSApplication.terminate(_:)),
-                                    keyEquivalent: "q")]
-
-        for item in menuItems {
-            if item.keyEquivalent != "q" {
-                item.target = self
-            }
-            menu.addItem(item)
-        }
-        
-        statusItem.menu = menu
-        statusItem.popUpMenu(statusItem.menu!)
+    private func setupMenu() {
+        statusItem.menu = contextMenu.menu
+        statusItem.popUpMenu(contextMenu.menu)
         statusItem.menu = nil
+        configMenuActions()
     }
     
-    @objc func clickReport(_ sender: Any) {
+    private func configMenuActions() {
+        contextMenu.itemClicked = { (item) in
+            switch item {
+            case .report:
+                self.clickReport()
+            case .sound:
+                self.toggleSound()
+            case .preferences:
+                self.openPreferences()
+            case .quit:
+               self.quitApplication()
+            }
+        }
+    }
+    
+    private func clickReport() {
         let alert = AlertFactory.warningOKAlert(message: "Message", information: "Text")
         alert.runModal()
     }
     
-    @objc func toggleSound(_ sender: Any) {
+    private func toggleSound() {
         let currentStatus = UserDefaults.standard.bool(forKey: "Sound")
         UserDefaults.standard.set(!currentStatus, forKey: "Sound")
         popoverViewController.toggleSound(shouldBeep: !currentStatus)
+        contextMenu.updateMenu()
+    }
+    
+    private func quitApplication() {
+        NSApplication.shared.terminate(self)
+    }
+    
+    private func openPreferences() {
+        requestWindow?()
     }
 }

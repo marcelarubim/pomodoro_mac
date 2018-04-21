@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1F23D14F2087B2E900F5F6A8 /* NSComboBoxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D14E2087B2E900F5F6A8 /* NSComboBoxExtension.swift */; };
 		1F23D1512087B4CC00F5F6A8 /* ClickHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1502087B4CC00F5F6A8 /* ClickHelper.swift */; };
+		1F23D1532087B9A500F5F6A8 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1522087B9A500F5F6A8 /* ContextMenu.swift */; };
+		1F23D1552087C4B600F5F6A8 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1542087C4B600F5F6A8 /* MainWindowController.swift */; };
+		1F23D1572087C59400F5F6A8 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1562087C59400F5F6A8 /* WindowManager.swift */; };
+		1F23D1592087C86400F5F6A8 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1582087C86400F5F6A8 /* MainTabViewController.swift */; };
+		1F23D15B2087C9BF00F5F6A8 /* ManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D15A2087C9BF00F5F6A8 /* ManagerFactory.swift */; };
 		1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C155200E3EBA007D0897 /* PopoverViewController.swift */; };
 		1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C159200E40F7007D0897 /* EventMonitor.swift */; };
 		1F520E9D207544130011168A /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520E9C207544130011168A /* BaseManager.swift */; };
@@ -57,6 +62,11 @@
 /* Begin PBXFileReference section */
 		1F23D14E2087B2E900F5F6A8 /* NSComboBoxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSComboBoxExtension.swift; sourceTree = "<group>"; };
 		1F23D1502087B4CC00F5F6A8 /* ClickHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickHelper.swift; sourceTree = "<group>"; };
+		1F23D1522087B9A500F5F6A8 /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
+		1F23D1542087C4B600F5F6A8 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		1F23D1562087C59400F5F6A8 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		1F23D1582087C86400F5F6A8 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		1F23D15A2087C9BF00F5F6A8 /* ManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerFactory.swift; sourceTree = "<group>"; };
 		1F44C155200E3EBA007D0897 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1F44C159200E40F7007D0897 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		1F520E9C207544130011168A /* BaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseManager.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 				1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */,
 				1FC8F9C5207BFD2B004409F5 /* TimeIntervalHelper.swift */,
 				1F23D1502087B4CC00F5F6A8 /* ClickHelper.swift */,
+				1F23D15A2087C9BF00F5F6A8 /* ManagerFactory.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 				1FE156F61FFD6FE300CE081A /* AppDelegate.swift */,
 				1F520EA520754ACD0011168A /* ApplicationManager.swift */,
 				1FC8F9BE207A9612004409F5 /* PopoverManager.swift */,
+				1F23D1562087C59400F5F6A8 /* WindowManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -151,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				1F44C155200E3EBA007D0897 /* PopoverViewController.swift */,
+				1F23D1542087C4B600F5F6A8 /* MainWindowController.swift */,
+				1F23D1582087C86400F5F6A8 /* MainTabViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -204,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */,
+				1F23D1522087B9A500F5F6A8 /* ContextMenu.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,18 +381,23 @@
 			files = (
 				1F520E9D207544130011168A /* BaseManager.swift in Sources */,
 				1F520EA2207545C30011168A /* NSViewController.swift in Sources */,
+				1F23D1572087C59400F5F6A8 /* WindowManager.swift in Sources */,
 				1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */,
 				1FC8F9C4207AB4D1004409F5 /* MenuFactory.swift in Sources */,
 				1F23D14F2087B2E900F5F6A8 /* NSComboBoxExtension.swift in Sources */,
 				1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */,
 				1FC8F9AF207A7A38004409F5 /* PomodoroController.swift in Sources */,
 				1FFA514220053DCA00E97099 /* Database.swift in Sources */,
+				1F23D1532087B9A500F5F6A8 /* ContextMenu.swift in Sources */,
 				1F23D1512087B4CC00F5F6A8 /* ClickHelper.swift in Sources */,
 				1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */,
 				1FC8F9BF207A9612004409F5 /* PopoverManager.swift in Sources */,
 				1FE157071FFE9A9400CE081A /* Style.swift in Sources */,
 				1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */,
+				1F23D1552087C4B600F5F6A8 /* MainWindowController.swift in Sources */,
 				1FC8F9C6207BFD2B004409F5 /* TimeIntervalHelper.swift in Sources */,
+				1F23D1592087C86400F5F6A8 /* MainTabViewController.swift in Sources */,
+				1F23D15B2087C9BF00F5F6A8 /* ManagerFactory.swift in Sources */,
 				1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */,
 				1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */,
 				1FC8F9C2207AB2B3004409F5 /* AlertFactory.swift in Sources */,

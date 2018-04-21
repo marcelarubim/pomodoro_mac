@@ -11,11 +11,10 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let applicationManager = ApplicationManager.standard
-    let popoverManager = PopoverManager()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         applicationManager.launch()
-        popoverManager.launch()
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -680,7 +680,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="32" y="-639"/>
         </scene>
         <!--ViewController-->
         <scene sceneID="hIz-AP-VOD">
@@ -760,6 +760,43 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="Mdt-2k-oEK">
+            <objects>
+                <windowController storyboardIdentifier="MainWindowController" id="WpP-mU-ReW" customClass="MainWindowController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ZkG-b1-QwC">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <rect key="contentRect" x="604" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1417"/>
+                        <connections>
+                            <outlet property="delegate" destination="WpP-mU-ReW" id="wos-4F-rJM"/>
+                        </connections>
+                    </window>
+                </windowController>
+                <customObject id="p3r-xi-etR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="-360"/>
+        </scene>
+        <!--Main Tab View Controller-->
+        <scene sceneID="Yye-cr-Wt6">
+            <objects>
+                <tabViewController storyboardIdentifier="MainTabViewController" id="FaR-iF-G1a" customClass="MainTabViewController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="pzo-pi-74D">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="FaR-iF-G1a" id="Rl6-lQ-6ah"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="pzo-pi-74D" id="ovK-hb-ZBJ"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="39J-4h-qG4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37" y="59"/>
         </scene>
     </scenes>
     <resources>

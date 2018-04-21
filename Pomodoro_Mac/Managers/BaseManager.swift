@@ -9,17 +9,11 @@
 import Cocoa
 
 class BaseManager: INavigation {
-    func loadManager() { }
-    
-    func unloadManager() { }
-    
-    func changeVC(vc: NSViewController) { }
-    
-    var storyboard: AppStoryboard!
+    func load() {
+        assert(false, "needs to implement load()")
+    }
 }
 
 protocol INavigation {
-    func loadManager()
-    func unloadManager()
-    func changeVC(vc: NSViewController)
+    func load()
 }
