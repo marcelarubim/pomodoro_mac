@@ -32,12 +32,6 @@ class PopoverViewController: NSViewController {
         stop?()
     }
     
-    @objc func cbxNameDoubleClick(_ sender: NSGestureRecognizer) {
-
-        cbxName.isEditable = true
-        doubleClicked = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,10 +41,6 @@ class PopoverViewController: NSViewController {
         cbxName.usesDataSource = true
         cbxName.dataSource = self
         cbxName.delegate = self
-        
-        let gesture = ClickHelper.doubleClick(target: self,
-                                              action: #selector(cbxNameDoubleClick(_ :)))
-        cbxName.addGestureRecognizer(gesture)
     }
     
     func toggleSound(shouldBeep: Bool) {
@@ -64,7 +54,6 @@ class PopoverViewController: NSViewController {
         btnStop.attributedTitle = NSAttributedString(string: "Stop", attributes: [.foregroundColor : NSColor.red,
                                                                                   .backgroundColor : NSColor.clear])
         btnStart?.sound?.volume = getVolume(UserDefaults.standard.bool(forKey: "Sound"))
-        cbxName.isEditable = false
     }
     
     func updateTimeText(time: Int) {
@@ -145,19 +134,7 @@ extension PopoverViewController: NSComboBoxDataSource, NSComboBoxDelegate {
     override func controlTextDidEndEditing(_ obj: Notification) {
         if let comboBox = obj.object as? NSComboBox {
             updateName?(comboBox.stringValue)
-            isUpdatingCouter -= 1
         }
-    }
-    
-    override func validateProposedFirstResponder(_ responder: NSResponder, for event: NSEvent?) -> Bool {
-        let value = super.validateProposedFirstResponder(responder, for: event)
-        if doubleClicked && isUpdatingCouter <= 0 {
-            cbxName.unselect()
-            isUpdatingCouter = 2
-            doubleClicked = false
-            return false
-        }
-        return value
     }
 }
 

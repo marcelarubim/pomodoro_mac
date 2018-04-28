@@ -62,6 +62,10 @@ class PopoverManager {
         pomodoro.updateTime = { time in
             self.popoverViewController.updateTimeText(time: time)
         }
+        
+        contextMenu.itemClicked = { (item) in
+            self.menuActions(item)
+        }
     }
     
     @objc func togglePopover(_ sender: Any) {
@@ -102,11 +106,10 @@ extension PopoverManager {
         statusItem.menu = contextMenu.menu
         statusItem.popUpMenu(contextMenu.menu)
         statusItem.menu = nil
-        configMenuActions()
+        
     }
     
-    private func configMenuActions() {
-        contextMenu.itemClicked = { (item) in
+    private func menuActions(_ item: ContextMenu.item) {
             switch item {
             case .report:
                 self.clickReport()
@@ -117,7 +120,6 @@ extension PopoverManager {
             case .quit:
                self.quitApplication()
             }
-        }
     }
     
     private func clickReport() {

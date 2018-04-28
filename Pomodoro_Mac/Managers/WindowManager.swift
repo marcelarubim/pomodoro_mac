@@ -22,8 +22,10 @@ class WindowManager: BaseManager {
     }
     
     override func load() {
-        if !(windowController.window?.isVisible)! {
-            windowController.showWindow(nil)
+        if let window = windowController.window {
+            if !window.isVisible {
+                windowController.showWindow(nil)
+            }
         }
     }
     

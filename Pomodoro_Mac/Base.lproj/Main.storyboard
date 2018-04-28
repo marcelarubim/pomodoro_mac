@@ -692,7 +692,7 @@
                         <subviews>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-qA-D2q">
                                 <rect key="frame" x="70" y="239" width="113" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Session name" drawsBackground="YES" usesSingleLineMode="YES" numberOfVisibleItems="8" id="oov-Jc-GF2">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" borderStyle="bezel" placeholderString="Session name" drawsBackground="YES" usesSingleLineMode="YES" numberOfVisibleItems="8" id="oov-Jc-GF2">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

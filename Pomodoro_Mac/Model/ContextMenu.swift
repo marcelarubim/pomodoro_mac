@@ -16,7 +16,7 @@ class ContextMenu {
     
     init() {
         setup()
-            }
+    }
     
     private func setup() {
         menu.removeAllItems()
@@ -37,12 +37,13 @@ class ContextMenu {
             $0.target = self
             menu.addItem($0)
         })
-
     }
     
     @objc private func itemClick(_ sender: Any) {
         if let index = menuItems.index(where: { $0 === sender as! NSMenuItem}) {
-            itemClicked?(item(rawValue: index)!)
+            if let item = item(rawValue: index) {
+                itemClicked?(item)
+            }
         }
     }
     
