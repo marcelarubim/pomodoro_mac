@@ -778,25 +778,70 @@
             </objects>
             <point key="canvasLocation" x="52" y="-360"/>
         </scene>
-        <!--Main Tab View Controller-->
-        <scene sceneID="Yye-cr-Wt6">
+        <!--Navigation Controller-->
+        <scene sceneID="lZC-D9-Xj6">
             <objects>
-                <tabViewController storyboardIdentifier="MainTabViewController" id="FaR-iF-G1a" customClass="MainTabViewController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabView key="tabView" type="noTabsNoBorder" id="pzo-pi-74D">
+                <viewController storyboardIdentifier="NavigationController" id="5p5-Ew-0Xa" customClass="NavigationController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="qYX-VF-fRe">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
-                        <connections>
-                            <outlet property="delegate" destination="FaR-iF-G1a" id="Rl6-lQ-6ah"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <outlet property="tabView" destination="pzo-pi-74D" id="ovK-hb-ZBJ"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="39J-4h-qG4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="db3-dg-1xk">
+                                <rect key="frame" x="213" y="175" width="37" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="9fz-9U-sFz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="nwa-cw-9z3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="59"/>
+            <point key="canvasLocation" x="564" y="-360"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="8E3-zh-bmw">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="Yrl-kZ-MlG" customClass="SettingsViewController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9oF-O1-hFw">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <tabView allowsTruncatedLabels="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN6-y4-q2a">
+                                <rect key="frame" x="23" y="20" width="404" height="266"/>
+                                <font key="font" metaFont="system"/>
+                            </tabView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="VN6-y4-q2a" firstAttribute="top" secondItem="9oF-O1-hFw" secondAttribute="top" constant="20" id="7dA-JI-Pau"/>
+                            <constraint firstItem="VN6-y4-q2a" firstAttribute="width" secondItem="9oF-O1-hFw" secondAttribute="width" constant="-60" id="lu4-De-FKD"/>
+                            <constraint firstItem="VN6-y4-q2a" firstAttribute="centerX" secondItem="9oF-O1-hFw" secondAttribute="centerX" id="qMd-dr-93w"/>
+                            <constraint firstAttribute="bottom" secondItem="VN6-y4-q2a" secondAttribute="bottom" constant="30" id="tts-Mh-4J8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tabView" destination="VN6-y4-q2a" id="ufK-1s-eFl"/>
+                    </connections>
+                </viewController>
+                <customObject id="dxD-4O-miY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039" y="-362"/>
+        </scene>
+        <!--Generic Settings View Controller-->
+        <scene sceneID="5Mr-B8-WCD">
+            <objects>
+                <viewController storyboardIdentifier="GenericSettingsViewController" id="7Vf-8h-cQC" customClass="GenericSettingsViewController" customModule="Pomodoro_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="3B7-M9-1JH">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="wfI-Uz-eJj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="-363"/>
         </scene>
     </scenes>
     <resources>

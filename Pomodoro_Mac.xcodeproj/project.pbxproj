@@ -12,7 +12,6 @@
 		1F23D1532087B9A500F5F6A8 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1522087B9A500F5F6A8 /* ContextMenu.swift */; };
 		1F23D1552087C4B600F5F6A8 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1542087C4B600F5F6A8 /* MainWindowController.swift */; };
 		1F23D1572087C59400F5F6A8 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1562087C59400F5F6A8 /* WindowManager.swift */; };
-		1F23D1592087C86400F5F6A8 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D1582087C86400F5F6A8 /* MainTabViewController.swift */; };
 		1F23D15B2087C9BF00F5F6A8 /* ManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23D15A2087C9BF00F5F6A8 /* ManagerFactory.swift */; };
 		1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C155200E3EBA007D0897 /* PopoverViewController.swift */; };
 		1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C159200E40F7007D0897 /* EventMonitor.swift */; };
@@ -21,7 +20,9 @@
 		1F520EA2207545C30011168A /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA1207545C30011168A /* NSViewController.swift */; };
 		1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA520754ACD0011168A /* ApplicationManager.swift */; };
 		1F53845420948D3F005160A2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53845320948D3F005160A2 /* NavigationController.swift */; };
+		1F5384572094934C005160A2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5384562094934C005160A2 /* SettingsViewController.swift */; };
 		1F71333E2098820200D9F5E9 /* TabFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71333D2098820200D9F5E9 /* TabFactory.swift */; };
+		1F7133402098838B00D9F5E9 /* GenericSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71333F2098838B00D9F5E9 /* GenericSettingsViewController.swift */; };
 		1F71334920989D9E00D9F5E9 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F71334820989D9E00D9F5E9 /* Localization.strings */; };
 		1F71334B20989F9A00D9F5E9 /* WindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */; };
 		1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */; };
@@ -69,7 +70,6 @@
 		1F23D1522087B9A500F5F6A8 /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		1F23D1542087C4B600F5F6A8 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		1F23D1562087C59400F5F6A8 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
-		1F23D1582087C86400F5F6A8 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		1F23D15A2087C9BF00F5F6A8 /* ManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerFactory.swift; sourceTree = "<group>"; };
 		1F44C155200E3EBA007D0897 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1F44C159200E40F7007D0897 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
@@ -78,7 +78,9 @@
 		1F520EA1207545C30011168A /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
 		1F520EA520754ACD0011168A /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		1F53845320948D3F005160A2 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		1F5384562094934C005160A2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1F71333D2098820200D9F5E9 /* TabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFactory.swift; sourceTree = "<group>"; };
+		1F71333F2098838B00D9F5E9 /* GenericSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSettingsViewController.swift; sourceTree = "<group>"; };
 		1F71334420989BC100D9F5E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1F71334820989D9E00D9F5E9 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
 		1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowExtension.swift; sourceTree = "<group>"; };
@@ -183,8 +185,9 @@
 			children = (
 				1F44C155200E3EBA007D0897 /* PopoverViewController.swift */,
 				1F23D1542087C4B600F5F6A8 /* MainWindowController.swift */,
-				1F23D1582087C86400F5F6A8 /* MainTabViewController.swift */,
 				1F53845320948D3F005160A2 /* NavigationController.swift */,
+				1F5384562094934C005160A2 /* SettingsViewController.swift */,
+				1F71333F2098838B00D9F5E9 /* GenericSettingsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -421,12 +424,13 @@
 				1F53845420948D3F005160A2 /* NavigationController.swift in Sources */,
 				1F23D1552087C4B600F5F6A8 /* MainWindowController.swift in Sources */,
 				1FC8F9C6207BFD2B004409F5 /* TimeIntervalHelper.swift in Sources */,
-				1F23D1592087C86400F5F6A8 /* MainTabViewController.swift in Sources */,
 				1F23D15B2087C9BF00F5F6A8 /* ManagerFactory.swift in Sources */,
 				1F44C157200E3EBA007D0897 /* PopoverViewController.swift in Sources */,
 				1FE156F71FFD6FE300CE081A /* AppDelegate.swift in Sources */,
 				1FC8F9C2207AB2B3004409F5 /* AlertFactory.swift in Sources */,
+				1F7133402098838B00D9F5E9 /* GenericSettingsViewController.swift in Sources */,
 				1F520EA0207545050011168A /* AppEnums.swift in Sources */,
+				1F5384572094934C005160A2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
