@@ -12,7 +12,7 @@ struct ManagerFactory {
     static func setupWindowManagers() -> [BaseManager] {
         var managers: [BaseManager] = []
         
-        managers.append(WindowManager())
+        managers.append(SettingsManager())
         
         return managers
     }
