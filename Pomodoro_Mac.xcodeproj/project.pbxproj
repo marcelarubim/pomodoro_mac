@@ -20,6 +20,7 @@
 		1F520EA0207545050011168A /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520E9F207545050011168A /* AppEnums.swift */; };
 		1F520EA2207545C30011168A /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA1207545C30011168A /* NSViewController.swift */; };
 		1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA520754ACD0011168A /* ApplicationManager.swift */; };
+		1F71334920989D9E00D9F5E9 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F71334820989D9E00D9F5E9 /* Localization.strings */; };
 		1F71334B20989F9A00D9F5E9 /* WindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */; };
 		1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */; };
 		1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */; };
@@ -74,6 +75,8 @@
 		1F520E9F207545050011168A /* AppEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		1F520EA1207545C30011168A /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
 		1F520EA520754ACD0011168A /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		1F71334420989BC100D9F5E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		1F71334820989D9E00D9F5E9 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
 		1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowExtension.swift; sourceTree = "<group>"; };
 		1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
@@ -153,6 +156,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		1F71334520989CDC00D9F5E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F71334820989D9E00D9F5E9 /* Localization.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1FC8F9C0207AB298004409F5 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +204,7 @@
 		1FE156F51FFD6FE300CE081A /* Pomodoro_Mac */ = {
 			isa = PBXGroup;
 			children = (
+				1F71334520989CDC00D9F5E9 /* Resources */,
 				1F520EA720754C8A0011168A /* Database */,
 				1F520E9B20753F930011168A /* Managers */,
 				1F44C158200E40DC007D0897 /* Helpers */,
@@ -316,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FE156FB1FFD6FE300CE081A /* Assets.xcassets in Resources */,
+				1F71334920989D9E00D9F5E9 /* Localization.strings in Resources */,
 				1FFA50EC2003EA6100E97099 /* LICENSE in Resources */,
 				1FE156FE1FFD6FE300CE081A /* Main.storyboard in Resources */,
 			);
@@ -416,6 +429,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1FE156FD1FFD6FE300CE081A /* Base */,
+				1F71334420989BC100D9F5E9 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
