@@ -48,7 +48,7 @@ class Database {
                                           start <- pomodoro.start,
                                           stop <- pomodoro.stop,
                                           period <- pomodoro.period)
-            let rowid = try db.run(insert)
+            try db.run(insert)
         } catch {
             print("Error: \(error.localizedDescription)")
         }
