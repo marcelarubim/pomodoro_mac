@@ -20,6 +20,7 @@
 		1F520EA0207545050011168A /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520E9F207545050011168A /* AppEnums.swift */; };
 		1F520EA2207545C30011168A /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA1207545C30011168A /* NSViewController.swift */; };
 		1F520EA620754ACD0011168A /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520EA520754ACD0011168A /* ApplicationManager.swift */; };
+		1F71334B20989F9A00D9F5E9 /* WindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */; };
 		1F7967FF205EDD2500CF20F6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */; };
 		1F86DCD9200A695C00B5CE7B /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */; };
 		1FC8F9AF207A7A38004409F5 /* PomodoroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */; };
@@ -73,6 +74,7 @@
 		1F520E9F207545050011168A /* AppEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		1F520EA1207545C30011168A /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
 		1F520EA520754ACD0011168A /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowExtension.swift; sourceTree = "<group>"; };
 		1F7967FE205EDD2500CF20F6 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1F86DCD8200A695C00B5CE7B /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
 		1FC8F9AE207A7A38004409F5 /* PomodoroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				1FC8F9C5207BFD2B004409F5 /* TimeIntervalHelper.swift */,
 				1F23D1502087B4CC00F5F6A8 /* ClickHelper.swift */,
 				1F23D15A2087C9BF00F5F6A8 /* ManagerFactory.swift */,
+				1F71334A20989F9A00D9F5E9 /* WindowExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				1FC8F9BF207A9612004409F5 /* PopoverManager.swift in Sources */,
 				1FE157071FFE9A9400CE081A /* Style.swift in Sources */,
 				1F44C15A200E40F7007D0897 /* EventMonitor.swift in Sources */,
+				1F71334B20989F9A00D9F5E9 /* WindowExtension.swift in Sources */,
 				1F23D1552087C4B600F5F6A8 /* MainWindowController.swift in Sources */,
 				1FC8F9C6207BFD2B004409F5 /* TimeIntervalHelper.swift in Sources */,
 				1F23D1592087C86400F5F6A8 /* MainTabViewController.swift in Sources */,
